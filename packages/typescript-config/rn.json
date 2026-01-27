@@ -1,0 +1,20 @@
+{
+    "extends": "./base.json",
+    "compilerOptions": {
+        "jsx": "react-native",
+        "lib": [
+            "ES2020"
+        ],
+        "types": [
+            "react-native",
+            "jest",
+            "react"
+        ],
+        "allowJs": true
+    },
+    "include": [
+        "src",
+        "index.ts",
+        "index.js"
+    ]
+}

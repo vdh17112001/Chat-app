@@ -1,0 +1,5 @@
+{
+  "extends": "@repo/typescript-config/rn.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["**/node_modules", "**/Pods"]
+}

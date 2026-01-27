@@ -1,0 +1,20 @@
+{
+  "extends": "@repo/typescript-config/backend.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@routes/*": ["src/routes/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@services/*": ["src/services/*"],
+      "@middlewares/*": ["src/middlewares/*"],
+      "@config/*": ["src/config/*"],
+      "@utils/*": ["src/utils/*"],
+      "@types/*": ["src/types/*"],
+      "@packages/shared": ["../../packages/shared/src"],
+      "@packages/shared/*": ["../../packages/shared/src/*"]
+    }
+  }
+}
