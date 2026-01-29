@@ -17,3 +17,4 @@ module.exports = {
     "@typescript-eslint/no-non-null-assertion": "off",
   },
 };
+// TODO : Add more rules and customizations as needed.
