@@ -18,6 +18,7 @@ const App = () => (
     <Header title="Web" />
     <div className="card">
       <Counter />
+      <Counter />
     </div>
   </div>
 );
