@@ -1,0 +1,51 @@
+name: Deploy Web (Staging)
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: chat_app
+
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STAGING }}
+
+    steps:
+      # 1. Checkout code
+      - uses: actions/checkout@v4
+
+      # 2. Setup pnpm
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.7.1
+          run_install: false
+
+      # 3. Setup Node + cache pnpm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      # 4. Install deps
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 5. Lint & Test (web only)
+      - name: Lint web
+        run: pnpm --filter web lint
+
+      - name: Test web
+        run: pnpm --filter web test
+
+      # 6. Pull env from Vercel (optional nhưng recommended)
+      - name: Pull Vercel Env
+        run: npx vercel pull --yes --cwd apps/web --token $VERCEL_TOKEN
+
+      # 7. Deploy (Vercel sẽ tự build)
+      - name: Deploy to Vercel (Staging)
+        run: npx vercel deploy --token $VERCEL_TOKEN
