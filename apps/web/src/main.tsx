@@ -17,6 +17,7 @@ const App = () => (
     </a>
     <div className="card">
       <Counter />
+      <Counter />
     </div>
   </div>
 );
