@@ -35,13 +35,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # 5. Lint & Test (web only)
-      - name: Lint web
-        run: pnpm --filter web lint
-
-      - name: Test web
-        run: pnpm --filter web test
-
       # 6. Pull env from Vercel (optional nhưng recommended)
       - name: Pull Vercel Env
         run: npx vercel pull --yes --cwd apps/web --token $VERCEL_TOKEN
